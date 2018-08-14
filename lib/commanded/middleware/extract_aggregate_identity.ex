@@ -37,9 +37,6 @@ defmodule Commanded.Middleware.ExtractAggregateIdentity do
     Map.get(command, identity)
   end
 
-  defp prefix(aggregate_uuid, pipeline) when is_integer(aggregate_uuid),
-    do: prefix(to_string(aggregate_uuid), pipeline)
-
   defp prefix(aggregate_uuid, %Pipeline{identity_prefix: nil}), do: aggregate_uuid
 
   # extract identity using a user defined function
